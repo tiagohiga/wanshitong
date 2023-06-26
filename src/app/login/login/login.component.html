@@ -1,0 +1,32 @@
+<div *ngIf="!loginService.logado()" class="width main-div">
+  <div class="login-box">
+  <mat-card color="primary">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Login</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="example-container height">
+      <mat-form-field>
+        <mat-label>Digite seu e-mail</mat-label>
+        <input matInput placeholder="pat@example.com" [(ngModel)]="userLogin.emailUsuario" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Digite sua senha</mat-label>
+        <input [(ngModel)]="userLogin.senhaUsuario" matInput [type]="hide ? 'password' : 'text'">
+      </mat-form-field>
+    </div>
+
+    <!-- <button (click)="onSignin()" class="link-button">Cadastre-se</button> -->
+    <div class="example-button-row">
+      <button (click)="onEntrar()" mat-raised-button color="primary">Entrar</button  >
+      <button mat-raised-button="warn" >Cancelar</button>
+    </div>
+  </mat-card>
+  </div>
+</div>

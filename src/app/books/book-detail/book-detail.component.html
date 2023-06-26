@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>{{nomeLivro}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-card-header>
+    <mat-card-subtitle>{{isbnLivro}}</mat-card-subtitle>
+    <mat-card-title class="font-size-20">{{nomeAutor}}</mat-card-title>
+    <mat-card-title class="font-size-15">{{nomeEditora}}</mat-card-title>
+    <mat-card-title class="font-size-15">{{nomeGenero}}</mat-card-title>
+    <mat-card-subtitle>Quantidade: {{qtd}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{descricaoLivro}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Requisitar
+    </button>
+    <button mat-raised-button (click)="onCancel()">Voltar</button>
+  </mat-card-actions>
+</mat-card>

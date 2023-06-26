@@ -1,0 +1,36 @@
+<mat-form-field>
+  <mat-label>E-mail</mat-label>
+  <input [(ngModel)]="email" matInput placeholder="mail@mail.com" #input>
+</mat-form-field>
+<mat-table [dataSource]="dataSource">
+
+  <!-- ISBN Column -->
+  <ng-container matColumnDef="isbn">
+    <mat-header-cell  *matHeaderCellDef>ISBN</mat-header-cell>
+    <mat-cell *matCellDef="let book; let i = index">{{ book }}</mat-cell>
+  </ng-container>
+
+  <!-- Acoes Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell class="action-column-header" *matHeaderCellDef>
+      Ações
+    </mat-header-cell>
+
+    <mat-cell class="action-column" *matCellDef="let i = index">
+      <button (click)="onRemove(i)"  mat-icon-button color="primary" aria-label="Remover um livro">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+
+<mat-divider></mat-divider>
+<div class="example-button-row">
+  <button (click)="onSave()" mat-raised-button color="primary">Confirmar</button>
+  <button (click)="onCancel()" mat-raised-button color="accent">Voltar</button>
+</div>

@@ -1,0 +1,55 @@
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="1" #input>
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource" >
+
+  <!-- Livro Column -->
+  <ng-container matColumnDef="idEmprestimo">
+    <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+    <mat-cell *matCellDef="let borrow">{{ borrow.idEmprestimo }}</mat-cell>
+  </ng-container>
+
+  <!-- Autor Column -->
+  <ng-container matColumnDef="usuario">
+    <mat-header-cell *matHeaderCellDef>Solicitante</mat-header-cell>
+    <mat-cell *matCellDef="let borrow">{{ borrow.usuario.emailUsuario }}</mat-cell>
+  </ng-container>
+
+  <!-- Editora Column -->
+  <ng-container matColumnDef="statusEmprestimo">
+    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+    <mat-cell *matCellDef="let borrow">{{ borrow.statusEmprestimo }}</mat-cell>
+  </ng-container>
+
+  <!-- Quantidade Column -->
+  <ng-container matColumnDef="dataEmprestimo">
+    <mat-header-cell *matHeaderCellDef>Realizado em</mat-header-cell>
+    <mat-cell *matCellDef="let borrow">{{ borrow.dataEmprestimo }}</mat-cell>
+  </ng-container>
+
+    <!-- Quantidade Column -->
+    <ng-container matColumnDef="prazoDevolucao">
+      <mat-header-cell *matHeaderCellDef>Prazo para Devolução</mat-header-cell>
+      <mat-cell *matCellDef="let borrow">{{ borrow.prazoDevolucao }}</mat-cell>
+    </ng-container>
+
+  <!-- Acoes Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell class="action-column-header" *matHeaderCellDef>
+      <button (click)="onAdd()" mat-mini-fab color="primary" aria-label="Adicionar um livro">
+        <mat-icon>shopping_cart_checkout</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell class="action-column" *matCellDef="let borrow">
+      <button (click)="onView(borrow)" mat-icon-button color="primary" aria-label="Visualizar um emprestimo">
+        <mat-icon>remove_red_eye</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

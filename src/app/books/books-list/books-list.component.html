@@ -1,0 +1,55 @@
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Orgulho e Preconceito" #input>
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource" >
+
+  <!-- ISBN Column -->
+  <ng-container matColumnDef="isbn">
+    <mat-header-cell  *matHeaderCellDef>ISBN</mat-header-cell>
+    <mat-cell *matCellDef="let book"><button class="link-button" (click)="onView(book)">{{ book.isbn }}</button></mat-cell>
+  </ng-container>
+
+  <!-- Livro Column -->
+  <ng-container matColumnDef="nomeLivro">
+    <mat-header-cell *matHeaderCellDef>Livro</mat-header-cell>
+    <mat-cell *matCellDef="let book">{{ book.nomeLivro }}</mat-cell>
+  </ng-container>
+
+  <!-- Autor Column -->
+  <ng-container matColumnDef="nomeAutor">
+    <mat-header-cell *matHeaderCellDef>Autor</mat-header-cell>
+    <mat-cell *matCellDef="let book">{{ book.idAutor.nomeAutor }}</mat-cell>
+  </ng-container>
+
+  <!-- Editora Column -->
+  <ng-container matColumnDef="nomeEditora">
+    <mat-header-cell *matHeaderCellDef>Editora</mat-header-cell>
+    <mat-cell *matCellDef="let book">{{ book.idEditora.nomeEditora }}</mat-cell>
+  </ng-container>
+
+  <!-- Quantidade Column -->
+  <ng-container matColumnDef="qtdDisponivel">
+    <mat-header-cell *matHeaderCellDef>Disponíveis</mat-header-cell>
+    <mat-cell *matCellDef="let book">{{ book.qtdDisponivel }}</mat-cell>
+  </ng-container>
+
+  <!-- Acoes Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell class="action-column-header" *matHeaderCellDef>
+      <button (click)="onAdd()" mat-mini-fab color="primary" aria-label="Adicionar um livro">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell class="action-column" *matCellDef="let book">
+      <button (click)="onEdit(book)" mat-icon-button color="primary" aria-label="Editar um livro">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Cadastrar Livro</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-card-content class="margin-content">
+    <form [formGroup]="form" class="min-width">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ISBN</mat-label>
+        <input matInput placeholder="9781234567890" formControlName="isbn" />
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Capa</mat-label>
+        <input matInput placeholder="capa.jpg" formControlName="imgLivro" />
+      </mat-form-field> -->
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome do Livro</mat-label>
+        <input
+          matInput
+          placeholder="A volta dos que nao foram"
+          formControlName="nomeLivro"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descrição</mat-label>
+        <input
+          matInput
+          placeholder="A volta dos que nao foram"
+          formControlName="descricaoLivro"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Quantidade</mat-label>
+        <input matInput placeholder="5" formControlName="qtdDisponivel" />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>

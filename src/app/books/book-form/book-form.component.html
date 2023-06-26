@@ -1,0 +1,111 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Cadastrar Livro</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-card-content>
+    <form [formGroup]="form" class="min-width">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ISBN</mat-label>
+        <input matInput placeholder="9781234567890" formControlName="isbn" />
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Capa</mat-label>
+        <input matInput placeholder="capa.jpg" formControlName="imgLivro" />
+      </mat-form-field> -->
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome do Livro</mat-label>
+        <input
+          matInput
+          placeholder="A volta dos que nao foram"
+          formControlName="nomeLivro"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descrição</mat-label>
+        <input
+          matInput
+          placeholder="A volta dos que nao foram"
+          formControlName="descricaoLivro"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Autor</mat-label>
+        <input
+          type="text"
+          placeholder="Marco Cervantes"
+          aria-label="Autor"
+          matInput
+          [matAutocomplete]="autoAuthor"
+          formControlName="idAutor"
+        />
+        <mat-autocomplete autoActiveFirstOption #autoAuthor="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredAuthorOptions | async"
+            [value]="option.nomeAutor"
+          >
+            {{ option.nomeAutor }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Editora</mat-label>
+        <input
+          type="text"
+          placeholder="Pick one"
+          aria-label="Editora"
+          matInput
+          [matAutocomplete]="autoPublisher"
+          formControlName="idEditora"
+        />
+        <mat-autocomplete autoActiveFirstOption #autoPublisher="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredPublisherOptions | async"
+            [value]="option.nomeEditora"
+          >
+            {{ option.nomeEditora }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Genero</mat-label>
+        <input
+          type="text"
+          placeholder="Romance"
+          aria-label="Genero"
+          matInput
+          [matAutocomplete]="autoGenre"
+          formControlName="idGenero"
+        />
+        <mat-autocomplete autoActiveFirstOption #autoGenre="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredGenreOptions | async"
+            [value]="option.nomeGenero"
+          >
+            {{ option.nomeGenero }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Quantidade</mat-label>
+        <input matInput placeholder="5" formControlName="qtdDisponivel" />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,59 @@
+mat-table{
+  overflow: auto;
+  max-height: 600px;
+}
+
+.action-column{
+  flex: 0 0 75px;
+}
+
+.action-column-header{
+  flex: 0 0 75px;
+}
+
+.link-button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+mat-form-field{
+  overflow: auto;
+  width: 100%;
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}

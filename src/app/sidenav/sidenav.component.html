@@ -1,0 +1,55 @@
+<div *ngIf='loginService.logado()'>
+  <mat-toolbar color="primary">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
+    Wan Shi Tong
+  </mat-toolbar>
+
+  <mat-sidenav-container color="primary">
+    <mat-sidenav  #sidenav="matSidenav">
+      <img class="avatar mat-elevation-z8">
+
+      <h4 class="name">{{nomeUsuario}}</h4>
+
+      <mat-divider></mat-divider>
+
+      <!-- <button routerLink="/" mat-button class="menu-button">
+        <mat-icon>home</mat-icon>
+        <span>Início</span>
+      </button> -->
+
+      <button routerLink="/books" mat-button class="menu-button">
+        <mat-icon>books</mat-icon>
+        <span>Livros</span>
+      </button>
+
+      <button routerLink="/borrow" mat-button class="menu-button">
+        <mat-icon>web-stories</mat-icon>
+        <span>Empréstimos</span>
+      </button>
+
+      <mat-divider></mat-divider>
+
+      <!-- <button routerLink="/profile" mat-button class="menu-button">
+        <mat-icon>person</mat-icon>
+        <span>Perfil</span>
+      </button>
+
+      <mat-divider></mat-divider> -->
+
+      <button (click)="onSair()" routerLink="/login" mat-button class="menu-button">
+        <mat-icon>logout</mat-icon>
+        <span>Sair</span>
+      </button>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="content mat-elevation-z4">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>
