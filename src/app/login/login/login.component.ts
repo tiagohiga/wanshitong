@@ -32,7 +32,7 @@ export class LoginComponent {
       return 'Digite seu e-mail';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('email') ? 'Não é um e-mail válido' : '';
   }
 
   onSignin(){

@@ -1,6 +1,6 @@
 <div *ngIf="!loginService.logado()" class="width main-div">
   <div class="login-box">
-  <mat-card color="primary">
+  <mat-card class="mat-card-container" color="primary">
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <span>Login</span>
@@ -22,7 +22,7 @@
       </mat-form-field>
     </div>
 
-    <!-- <button (click)="onSignin()" class="link-button">Cadastre-se</button> -->
+    <button (click)="onSignin()" class="link-button">Cadastre-se</button>
     <div class="example-button-row">
       <button (click)="onEntrar()" mat-raised-button color="primary">Entrar</button  >
       <button mat-raised-button="warn" >Cancelar</button>

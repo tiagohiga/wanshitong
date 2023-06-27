@@ -1,1 +1,45 @@
-<p>signin works!</p>
+<div *ngIf="!loginService.logado()" class="width main-div">
+  <div class="login-box">
+  <mat-card class="mat-card-container" color="primary">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Cadastro</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input [(ngModel)]="user.nomeUsuario" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container height">
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="pat@example.com" [(ngModel)]="user.emailUsuario" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Senha</mat-label>
+        <input [(ngModel)]="user.senhaUsuario" matInput [type]="hide ? 'password' : 'text'">
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Digite a senha novamente</mat-label>
+        <input [(ngModel)]="confirmacaoSenha" matInput [type]="hide ? 'password' : 'text'">
+      </mat-form-field>
+    </div>
+
+    <div class="example-button-row">
+      <button (click)="onCadastrar()" mat-raised-button color="primary">Cadastrar</button  >
+      <button (click)="onCancel()" mat-raised-button="warn" >Cancelar</button>
+    </div>
+  </mat-card>
+  </div>
+</div>

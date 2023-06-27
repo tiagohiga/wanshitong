@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class LoginService {
+  BASE_URL: string = environment.baseUrl;
+
   private readonly API_AUTH = 'v1/auth/autenticar'
 
   private readonly API_REGISTER = 'v1/auth/registrar'
@@ -17,11 +19,11 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
   entrar(userinfoLogin : UserInfoLogin): Observable<UserLogin>{
-    return this.httpClient.post<UserLogin>(this.API_AUTH, userinfoLogin)
+    return this.httpClient.post<UserLogin>(`${this.BASE_URL}` + this.API_AUTH, userinfoLogin)
   }
 
   cadastrar(user: User): Observable<User>{
-    return this.httpClient.post<User>(this.API_AUTH, user)
+    return this.httpClient.post<User>(`${this.BASE_URL}` + this.API_REGISTER, user)
   }
 
   logado(){
